@@ -7,7 +7,7 @@ resource "azurerm_application_insights" "default" {
 }
 
 resource "azurerm_key_vault" "default" {
-  name                     = "kv-${var.name}-${var.environment}"
+  name                     = "keyvaultml"
   location                 = azurerm_resource_group.default.location
   resource_group_name      = azurerm_resource_group.default.name
   tenant_id                = data.azurerm_client_config.current.tenant_id
@@ -16,7 +16,7 @@ resource "azurerm_key_vault" "default" {
 }
 
 resource "azurerm_storage_account" "default" {
-  name                     = "st${var.name}${var.environment}"
+  name                     = "stml"
   location                 = azurerm_resource_group.default.location
   resource_group_name      = azurerm_resource_group.default.name
   account_tier             = "Standard"
@@ -24,7 +24,7 @@ resource "azurerm_storage_account" "default" {
 }
 
 resource "azurerm_container_registry" "default" {
-  name                = "cr${var.name}${var.environment}"
+  name                = "crml"
   location            = azurerm_resource_group.default.location
   resource_group_name = azurerm_resource_group.default.name
   sku                 = "Premium"
@@ -33,7 +33,7 @@ resource "azurerm_container_registry" "default" {
 
 # Machine Learning workspace
 resource "azurerm_machine_learning_workspace" "default" {
-  name                    = "mlw-${var.name}-${var.environment}"
+  name                    = "mlwtest"
   location                = azurerm_resource_group.default.location
   resource_group_name     = azurerm_resource_group.default.name
   application_insights_id = azurerm_application_insights.default.id
