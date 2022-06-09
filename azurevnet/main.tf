@@ -18,11 +18,6 @@ resource "azurerm_subnet" "acr" {
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.aml.name
   address_prefix       = "10.100.1.0/24"
-  #Avoid update after ACR sets up routing
-  #https://github.com/terraform-providers/terraform-provider-azurerm/issues/3749#issuecomment-532849895
-  lifecycle {
-    ignore_changes = [route_table_id]
-  }
 }
 
 # Create subnet
