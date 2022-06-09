@@ -1,7 +1,6 @@
 variable "name" {
   type        = string
   description = "Name of the deployment"
-  default = "mlworkspace"
 }
 
 variable "environment" {
