@@ -1,6 +1,6 @@
 # Dependent resources for Azure Machine Learning
 resource "azurerm_application_insights" "default" {
-  name                = "appi-${var.name}-${var.environment}"
+  name                = "appiml"
   location            = azurerm_resource_group.default.location
   resource_group_name = azurerm_resource_group.default.name
   application_type    = "web"
