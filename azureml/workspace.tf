@@ -1,14 +1,14 @@
 # Dependent resources for Azure Machine Learning
 resource "azurerm_application_insights" "default" {
-  name                = "appiml${var.name}"
-  location            = azurerm_resource_group.default.location
+  name                = "appiml${var.prefix}"
+  location            = var.location
   resource_group_name =  var.resource_group_name
   application_type    = "web"
 }
 
 resource "azurerm_key_vault" "default" {
-  name                     = "keyvaultmlworkspace${var.name}"
-  location                 = azurerm_resource_group.default.location
+  name                     = "keyvaultmlworkspace${var.prefix}"
+  location                 = var.location
   resource_group_name      = var.resource_group_name
   tenant_id                = data.azurerm_client_config.current.tenant_id
   sku_name                 = "premium"
@@ -17,7 +17,7 @@ resource "azurerm_key_vault" "default" {
 
 resource "azurerm_storage_account" "default" {
   name                     = "storgemlworkspace${var.prefix}"
-  location                 = azurerm_resource_group.default.location
+  location                 = var.location
   resource_group_name      = var.resource_group_name
   account_tier             = "Standard"
   account_replication_type = "GRS"
@@ -25,7 +25,7 @@ resource "azurerm_storage_account" "default" {
 
 resource "azurerm_container_registry" "default" {
   name                = "crmlworkspace${var.prefix}"
-  location            = azurerm_resource_group.default.location
+  location            = var.location
   resource_group_name = var.resource_group_name
   sku                 = "Premium"
   admin_enabled       = true
@@ -33,8 +33,8 @@ resource "azurerm_container_registry" "default" {
 
 # Machine Learning workspace
 resource "azurerm_machine_learning_workspace" "default" {
-  name                    = "mlwtest${var.prefix}"
-  location                = azurerm_resource_group.default.location
+  name                    = "ml${var.prefix}"
+  location                = var.location
   resource_group_name     = var.resource_group_name
   application_insights_id = azurerm_application_insights.default.id
   key_vault_id            = azurerm_key_vault.default.id
