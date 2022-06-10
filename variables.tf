@@ -4,6 +4,15 @@ variable "prefix" {
 
 variable "location" {
   type    = string
-  default = "West Europe"
+}
+
+variable "name" {
+  type        = string
+  description = "Name of the deployment"
+}
+
+variable "environment" {
+  type        = string
+  description = "Name of the environment"
 }
 
