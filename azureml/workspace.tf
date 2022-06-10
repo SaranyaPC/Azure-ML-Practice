@@ -2,7 +2,7 @@
 resource "azurerm_application_insights" "default" {
   name                = "appiml${var.name}"
   location            = azurerm_resource_group.default.location
-  resource_group_name = azurerm_resource_group.default.name
+  resource_group_name =  var.resource_group_name
   application_type    = "web"
 }
 
