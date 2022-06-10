@@ -44,9 +44,9 @@ module "acr" {
 
 module "azureml" {
   source = "./azureml"
- // resource_group_name = azurerm_resource_group.aml.name
-  //prefix = var.prefix
+  resource_group_name = azurerm_resource_group.aml.name
+  prefix = var.prefix
   location = var.location
- // tenant_id = data.azurerm_client_config.current.tenant_id
+  tenant_id = data.azurerm_client_config.current.tenant_id
 }
 
