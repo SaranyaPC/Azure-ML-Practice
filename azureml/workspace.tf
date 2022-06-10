@@ -7,7 +7,7 @@ resource "azurerm_application_insights" "default" {
 }
 
 resource "azurerm_key_vault" "default" {
-  name                     = "keyvaultmlworkspace${var.prefix}"
+  name                     = "key${var.prefix}"
   location                 = var.location
   resource_group_name      = var.resource_group_name
   tenant_id                = data.azurerm_client_config.current.tenant_id
@@ -16,7 +16,7 @@ resource "azurerm_key_vault" "default" {
 }
 
 resource "azurerm_storage_account" "default" {
-  name                     = "storgemlworkspace${var.prefix}"
+  name                     = "storage${var.prefix}"
   location                 = var.location
   resource_group_name      = var.resource_group_name
   account_tier             = "Standard"
@@ -24,7 +24,7 @@ resource "azurerm_storage_account" "default" {
 }
 
 resource "azurerm_container_registry" "default" {
-  name                = "crmlworkspace${var.prefix}"
+  name                = "cr${var.prefix}"
   location            = var.location
   resource_group_name = var.resource_group_name
   sku                 = "Premium"
