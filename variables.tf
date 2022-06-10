@@ -16,3 +16,11 @@ variable "environment" {
   description = "Name of the environment"
 }
 
+variable "geolocation" {
+  type    = string
+}
+
+variable "geolocation1" {
+  type    = string
+}
+

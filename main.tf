@@ -40,6 +40,8 @@ module "acr" {
   resource_group_name = azurerm_resource_group.aml.name
   prefix = var.prefix
   location = var.location
+  geolocation = var.geolocation
+  geolocation1 = var.geolocation1
 }
 
 module "azureml" {

@@ -22,12 +22,12 @@ resource "azurerm_container_registry" "acr" {
   resource_group_name = var.resource_group_name
   sku                 = "Premium"
   georeplications {
-    location                = "East US"
+    location                = var.geolocation
     zone_redundancy_enabled = true
     tags                    = {}
   }
   georeplications {
-    location                = "westeurope"
+    location                = var.geolocation1
     zone_redundancy_enabled = true
     tags                    = {}
   }

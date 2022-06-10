@@ -9,3 +9,11 @@ variable "resource_group_name" {
 variable "location" {
   type    = string
 }
+
+variable "geolocation" {
+  type    = string
+}
+
+variable "geolocation1" {
+  type    = string
+}
