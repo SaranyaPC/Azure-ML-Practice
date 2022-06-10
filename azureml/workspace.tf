@@ -1,13 +1,13 @@
 # Dependent resources for Azure Machine Learning
 resource "azurerm_application_insights" "default" {
-  name                = "appiml"
+  name                = "appiml${var.prefix}"
   location            = azurerm_resource_group.default.location
   resource_group_name = azurerm_resource_group.default.name
   application_type    = "web"
 }
 
 resource "azurerm_key_vault" "default" {
-  name                     = "keyvaultmlworkspace"
+  name                     = "keyvaultmlworkspace${var.prefix}"
   location                 = azurerm_resource_group.default.location
   resource_group_name      = azurerm_resource_group.default.name
   tenant_id                = data.azurerm_client_config.current.tenant_id
@@ -16,7 +16,7 @@ resource "azurerm_key_vault" "default" {
 }
 
 resource "azurerm_storage_account" "default" {
-  name                     = "storgemlworkspace"
+  name                     = "storgemlworkspace${var.prefix}"
   location                 = azurerm_resource_group.default.location
   resource_group_name      = azurerm_resource_group.default.name
   account_tier             = "Standard"
@@ -24,7 +24,7 @@ resource "azurerm_storage_account" "default" {
 }
 
 resource "azurerm_container_registry" "default" {
-  name                = "crmlworkspace"
+  name                = "crmlworkspace${var.prefix}"
   location            = azurerm_resource_group.default.location
   resource_group_name = azurerm_resource_group.default.name
   sku                 = "Premium"
@@ -33,7 +33,7 @@ resource "azurerm_container_registry" "default" {
 
 # Machine Learning workspace
 resource "azurerm_machine_learning_workspace" "default" {
-  name                    = "mlwtest"
+  name                    = "mlwtest${var.prefix}"
   location                = azurerm_resource_group.default.location
   resource_group_name     = azurerm_resource_group.default.name
   application_insights_id = azurerm_application_insights.default.id
