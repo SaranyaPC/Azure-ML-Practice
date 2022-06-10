@@ -12,3 +12,7 @@ terraform {
 provider "azurerm" {
   features {}
 }
+
+# Data
+
+data "azurerm_client_config" "current" {}
